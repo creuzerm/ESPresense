@@ -191,16 +191,18 @@ void setupNetwork() {
 
 #endif
 
+    improvSerial.setDeviceInfo(ImprovTypes::ChipFamily::CF_ESP32, "My-Device-9a4c2b", "2.1.5", "My Device");
+
     unsigned int connectProgress = 0;
     AsyncWiFiSettings.onWaitLoop = [&connectProgress]() {
         GUI::Wifi(connectProgress++);
-        SerialImprov::Loop(true);
+        improvSerial.handleSerial();
         return 50;
     };
     unsigned int portalProgress = 0;
     AsyncWiFiSettings.onPortalWaitLoop = [&portalProgress, portalTimeout]() {
         GUI::Portal(portalProgress++);
-        SerialImprov::Loop(false);
+        improvSerial.handleSerial();
 
         if (millis() > portalTimeout)
             ESP.restart();
@@ -546,7 +548,7 @@ void loop() {
     GUI::Loop();
     Motion::Loop();
     HttpWebServer::Loop();
-    SerialImprov::Loop(false);
+    improvSerial.handleSerial();
 #if M5STICK
     AXP192::Loop();
 #endif

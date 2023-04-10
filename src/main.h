@@ -18,7 +18,7 @@
 #include "HttpWebServer.h"
 #include "Motion.h"
 #include "Network.h"
-#include "SerialImprov.h"
+#include <ImprovWiFiLibrary.h>
 #include "Updater.h"
 #include "defaults.h"
 #include "globals.h"
@@ -43,6 +43,7 @@
 #include "TSL2561.h"
 #endif
 
+ImprovWiFi improvSerial(&Serial);
 TimerHandle_t reconnectTimer;
 TaskHandle_t scanTaskHandle;
 
