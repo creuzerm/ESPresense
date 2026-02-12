@@ -165,6 +165,12 @@ void setupNetwork() {
     room = HeadlessWiFiSettings.string("room", ESPMAC, "Room");
     HeadlessWiFiSettings.string("wifi-ssid", "", "WiFi SSID");
     HeadlessWiFiSettings.pstring("wifi-password", "", "WiFi Password");
+
+    // Check for Mesh Fix setting (Default to false)
+    if (HeadlessWiFiSettings.checkbox("mesh_fix", false, "Better Mesh Router Support")) {
+        WiFi.persistent(false);
+    }
+
     auto wifiTimeout = HeadlessWiFiSettings.integer("wifi_timeout", DEFAULT_WIFI_TIMEOUT, "Seconds to wait for WiFi before captive portal (-1 = forever)");
     auto portalTimeout = 1000UL * HeadlessWiFiSettings.integer("portal_timeout", DEFAULT_PORTAL_TIMEOUT, "Seconds to wait in captive portal before rebooting");
     std::vector<String> ethernetTypes = {"None", "WT32-ETH01", "ESP32-POE", "WESP32", "QuinLED-ESP32", "TwilightLord-ESP32", "ESP32Deux", "KIT-VE", "LilyGO-T-ETH-POE", "GL-inet GL-S10 v2.1 Ethernet", "EST-PoE-32", "LilyGO-T-ETH-Lite (RTL8201)", "ESP32-POE_A1"};
