@@ -166,8 +166,9 @@ void setupNetwork() {
     HeadlessWiFiSettings.string("wifi-ssid", "", "WiFi SSID");
     HeadlessWiFiSettings.pstring("wifi-password", "", "WiFi Password");
 
-    // Check for Mesh Fix setting (Default to false)
-    if (HeadlessWiFiSettings.checkbox("mesh_fix", false, "Better Mesh Router Support")) {
+    // Check for Persistent WiFi setting (Default to false)
+    // When true, we disable WiFi persistence to force a scan on every boot
+    if (HeadlessWiFiSettings.checkbox("persistent_wifi", false, "Disable WiFi Persistence")) {
         WiFi.persistent(false);
     }
 

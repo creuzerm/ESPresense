@@ -27,7 +27,7 @@
 
 #define INITR_REDTAB160x80
 #define INITB 0xB
-#define TAB_COLOUR INITR_GREENTAB160x80
+#define TAB_COLOUR 0x6 // INITR_GREENTAB160x80
 #define CGRAM_OFFSET
 
 // Color definitions for backwards compatibility with old sketches

@@ -162,9 +162,9 @@
             </div>
 
             <div class="space-y-4 pt-2">
-                <label for="mesh-fix" class="flex items-center space-x-2">
-                    <input id="mesh-fix" type="checkbox" name="mesh_fix" value="1" bind:checked={$mainSettings.values.mesh_fix} class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500" />
-                    <span>Better Mesh Router Support (Disable WiFi Persistence)</span>
+                <label for="persistent-wifi" class="flex items-center space-x-2">
+                    <input id="persistent-wifi" type="checkbox" name="persistent_wifi" value="1" bind:checked={$mainSettings.values.persistent_wifi} class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500" />
+                    <span>Disable WiFi Persistence (for Better Mesh Router Support)</span>
                 </label>
                 <p class="text-xs text-gray-500 ml-6">
                     Forces a full network scan on every reboot. Enable this if your device connects to distant/weak mesh nodes instead of the closest one.
