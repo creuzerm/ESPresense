@@ -161,6 +161,16 @@
                 <input id="wifi-password" type="password" name="wifi-password" bind:value={$mainSettings.values["wifi-password"]} placeholder="Enter WiFi Password" class="mt-1 block w-full rounded-md" />
             </div>
 
+            <div class="space-y-4 pt-2">
+                <label for="persistent-wifi" class="flex items-center space-x-2">
+                    <input id="persistent-wifi" type="checkbox" name="persistent_wifi" value="1" bind:checked={$mainSettings.values.persistent_wifi} class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500" />
+                    <span>Disable WiFi Persistence (for Better Mesh Router Support)</span>
+                </label>
+                <p class="text-xs text-gray-500 ml-6">
+                    Forces a full network scan on every reboot. Enable this if your device connects to distant/weak mesh nodes instead of the closest one.
+                </p>
+            </div>
+
             <div>
                 <label for="wifi-timeout" class="block text-sm font-medium"> Seconds to wait for WiFi before captive portal (-1 = forever) </label>
                 <input id="wifi-timeout" type="number" name="wifi_timeout" bind:value={$mainSettings.values.wifi_timeout} placeholder={String($mainSettings.defaults.wifi_timeout)} step="1" min="-2147483648" max="2147483647" class="mt-1 block w-full rounded-md" />

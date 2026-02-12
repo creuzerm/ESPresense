@@ -193,6 +193,20 @@ test.describe('Settings Page', () => {
 	});
 
 	test('should show saving state on submit button', async ({ page }) => {
+		// Override route to add delay
+		await page.route('**/wifi/extras', async (route) => {
+			if (route.request().method() === 'POST') {
+				await new Promise(resolve => setTimeout(resolve, 500));
+				await route.fulfill({ status: 200 });
+			} else {
+				await route.fulfill({
+					status: 200,
+					contentType: 'application/json',
+					body: JSON.stringify(mockExtraSettings)
+				});
+			}
+		});
+
 		await page.goto('/settings');
 		await page.waitForSelector('form#extras');
 

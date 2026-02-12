@@ -67,6 +67,7 @@ export interface MainSettings {
         portal_timeout: number;
         "wifi-ssid": string;
         "wifi-password": string;
+        persistent_wifi: boolean;
         eth: string;
         mqtt_host: string;
         mqtt_port: number;
@@ -86,6 +87,7 @@ export interface MainSettings {
         room: string;
         "wifi-ssid": string;
         "wifi-password": string;
+        persistent_wifi: boolean;
         wifi_timeout: number;
         portal_timeout: number;
         eth: string;
